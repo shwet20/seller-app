@@ -1,14 +1,9 @@
 import React from "react";
 
 const Card = ({ car }) => {
-
   return (
     <div className="c_card flex flex-col gap-2 w-full bg-blue-50 rounded-xl p-4 shadow-lg shadow-gray-400 mb-10">
-      <img
-        src={car.img}
-        alt="Car"
-        className="w-full rounded-xl mb-5"
-      />
+      <img src={car.img} alt="Car" className="w-full rounded-xl mb-5" />
       <div className="title-row flex justify-between items-center mb-3">
         <h3 className="font-normal text-lg">{car.car_name}</h3>
         <span className="border border-dotted border-green-500 rounded-full px-4 py-2 text-sm">
@@ -74,7 +69,8 @@ const Card = ({ car }) => {
       </div>
       <div className="cost-rent flex justify-between items-center mb-3">
         <h3 className="font-medium text-lg">
-          {car.rent_cost}<span className="text-sm font-normal"> / month</span>
+          {car.rent_cost}
+          <span className="text-sm font-normal"> / month</span>
         </h3>
         <div className="btn-row flex">
           <button className="favourite bg-blue-200 rounded-lg px-4 py-2 mr-3 hover:border-black hover:border-solid transition-all duration-500 ease-in-out">

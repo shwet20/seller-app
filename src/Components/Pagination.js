@@ -16,26 +16,26 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     }
   };
 
-   // Function to render the page numbers in the pagination component
-   const renderPageNumbers = () => {
+  // Function to render the page numbers in the pagination component
+  const renderPageNumbers = () => {
     const pageNumbers = [];
     const maxPagesToShow = 3; // Maximum number of pages to show in pagination
     const range = Math.floor(maxPagesToShow / 2);
-  
+
     let startPage = currentPage - range;
     let endPage = currentPage + range;
-  
+
     // Adjust start and end page numbers based on the range and total pages
     if (startPage < 1) {
       startPage = 1;
       endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
     }
-  
+
     if (endPage > totalPages) {
       endPage = totalPages;
       startPage = Math.max(1, endPage - maxPagesToShow + 1);
     }
-  
+
     // Add ellipsis or page numbers based on the range and current page
     if (startPage > 1) {
       pageNumbers.push(
@@ -47,16 +47,19 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           1
         </span>
       );
-  
+
       if (startPage > 2) {
         pageNumbers.push(
-          <span key="ellipsisStart" className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer">
+          <span
+            key="ellipsisStart"
+            className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer"
+          >
             .....
           </span>
         );
       }
     }
-  
+
     // Render page numbers within the visible range
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
@@ -71,27 +74,33 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </span>
       );
     }
-  
+
     // Add ellipsis or last page number if applicable
     if (endPage < totalPages) {
       if (endPage < totalPages - 1) {
         pageNumbers.push(
-          <span key="ellipsisEnd" className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer">
+          <span
+            key="ellipsisEnd"
+            className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer"
+          >
             .....
           </span>
         );
       }
-  
+
       pageNumbers.push(
-        <span key={totalPages} className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer" onClick={() => onPageChange(totalPages)}>
+        <span
+          key={totalPages}
+          className="pageNumber px-3 py-1 mx-2 rounded-md shadow-md cursor-pointer"
+          onClick={() => onPageChange(totalPages)}
+        >
           {totalPages}
         </span>
       );
     }
-  
+
     return pageNumbers;
   };
-  
 
   return (
     <div className="paginationRow flex justify-between bg-blue-100 rounded-lg shadow-md p-4 mt-4">
@@ -99,10 +108,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         {/* Display current page count and total pages count */}
         <span>{currentPage}</span> form <span>{totalPages}</span>
       </div>
-       {/* Navigation buttons and page numbers */}
+      {/* Navigation buttons and page numbers */}
       <div className="paginatonNav flex justify-center">
         <span>
-           {/* Previous page button */}
+          {/* Previous page button */}
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
@@ -113,10 +122,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <FaArrowLeft />
           </button>
         </span>
-         {/* Render page numbers */}
+        {/* Render page numbers */}
         {renderPageNumbers()}
         <span>
-           {/* Next page button */}
+          {/* Next page button */}
           <button
             onClick={handleNextPage}
             disabled={currentPage === totalPages}

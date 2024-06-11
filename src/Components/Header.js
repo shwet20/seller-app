@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from "react";
+import { SearchContext } from "../Context/SearchContext";
 
 const Header = () => {
-  const [selectedSort, setSelectedSort] = useState('relevance');
-  const [selectedBrand, setSelectedBrand] = useState('allbrands');
+  const [selectedSort, setSelectedSort] = useState("relevance");
+  const [selectedBrand, setSelectedBrand] = useState("allbrands");
+
+  const { setSearchTerm } = useContext(SearchContext);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <header className="flex bg-[#f0f5f9] rounded-2xl shadow-sm p-5 mb-5">
@@ -11,6 +18,7 @@ const Header = () => {
           type="text"
           className="w-52 h-10 rounded-full px-4 border border-gray-300 mr-5"
           placeholder="Search..."
+          onChange={handleSearchChange}
         />
         <svg
           className="absolute w-4 right-8 top-3 fill-[#737373]"
